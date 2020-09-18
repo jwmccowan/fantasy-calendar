@@ -1,0 +1,33 @@
+{
+  "name": "fantasy-calendar",
+  "version": "0.1.0",
+  "description": "Fantasy Calendar",
+  "repository": "http://www.github.com/jwmccowan/fantasy-calendar",
+  "author": "@jmaclives",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "shared/**",
+    "apps/**"
+  ],
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "eslint": "^7.9.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "husky": "^4.3.0",
+    "jest": "^26.4.2",
+    "lerna": "^3.22.1",
+    "prettier": "^2.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn run prettify && yarn run test"
+    }
+  },
+  "scripts": {
+    "build:all": "lerna run build --stream",
+    "test:all": "yarn run jest",
+    "lint:all": "lerna exec --no-bail --no-prefix --stream -- yarn eslint . --ext ts --ext tsx --ext js --color"
+  }
+}

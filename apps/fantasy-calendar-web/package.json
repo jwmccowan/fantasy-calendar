@@ -1,0 +1,36 @@
+{
+  "name": "fantasy-calendar-web",
+  "version": "0.1.0",
+  "description": "Web interface",
+  "author": "jwmccowan <jwmccowan@gmail.com>",
+  "homepage": "",
+  "license": "MIT",
+  "main": "src/index.tsx",
+  "directories": {
+    "lib": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "src"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "scripts": {
+    "build": "npm run type-check && parcel build ./src/index.html --public-url '/'",
+    "start": "parcel src/index.html --open",
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
