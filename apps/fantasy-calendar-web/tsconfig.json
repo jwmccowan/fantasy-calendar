@@ -6,10 +6,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "types": ["node", "react", "jest"],
-    "baseUrl": "./src",
-    "paths": {
-      "~*": ["./*"]
-    }
+    "outDir": "./dist/"
   },
   "files": [],
   "include": ["src/**/*"]
