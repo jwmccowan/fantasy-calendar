@@ -24,6 +24,7 @@
     "husky": "^4.3.0",
     "jest": "^26.4.2",
     "lerna": "^3.22.1",
+    "lint-staged": "^10.4.0",
     "mini-css-extract-plugin": "^0.11.2",
     "prettier": "^2.1.2",
     "source-map-loader": "^1.1.0",
@@ -34,12 +35,15 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run prettify && yarn run test"
+      "pre-commit": "lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents"
     }
   },
   "scripts": {
     "build:all": "lerna run build --stream",
     "test:all": "yarn run jest",
     "lint:all": "lerna exec --no-bail --no-prefix --stream -- yarn eslint . --ext ts --ext tsx --ext js --color"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
   }
 }

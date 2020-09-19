@@ -23,7 +23,8 @@
     "test": "echo \"Error: run tests from root\" && exit 1",
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
-    "bundle-report": "webpack-bundle-analyzer --port 4200 stats.json"
+    "bundle-report": "webpack-bundle-analyzer --port 4200 stats.json",
+    "precommit": "lint-staged"
   },
   "devDependencies": {
     "@types/luxon": "^1.24.4",
