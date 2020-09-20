@@ -4,11 +4,11 @@ export type InputEvent = React.ChangeEvent<HTMLTextAreaElement | HTMLInputElemen
 export type InputChanger = (ev: InputEvent) => void;
 
 export const useTextFieldValue = (initialValue = ''): [string, InputChanger] => {
-    const [value, setValue] = React.useState(initialValue);
+  const [value, setValue] = React.useState(initialValue);
 
-    const setValueByEvent: InputChanger = React.useCallback((ev) => {
-        setValue(ev.target.value);
-    }, []);
+  const setValueByEvent: InputChanger = React.useCallback((ev) => {
+    setValue(ev.target.value);
+  }, []);
 
-    return [value, setValueByEvent];
+  return [value, setValueByEvent];
 };
