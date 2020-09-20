@@ -5,7 +5,7 @@
 type Calendar {
   id: String!
   title: String!
-  calItems: [CalendarItem!]
+  calItems(end: String!, start: String!): [CalendarItem!]
 }
 
 type CalendarItem {
@@ -18,7 +18,8 @@ type CalendarItem {
 
 type Query {
   calendarItem(id: String!): CalendarItem!
-  calendarItems: [CalendarItem!]!
+  calendarItems(end: String!, start: String!): [CalendarItem!]!
+  calendarItemsByDate(date: String!): [CalendarItem!]!
   calendar(id: String!): Calendar!
   calendars: [Calendar!]!
 }

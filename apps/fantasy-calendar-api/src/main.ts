@@ -5,18 +5,20 @@
 
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { express as voyagerMiddleware } from 'graphql-voyager/middleware';
 
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  console.log('eggs');
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3333;
-  await app.listen(port, () => {
-    Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix);
-  });
+    const app = await NestFactory.create(AppModule);
+    const globalPrefix = 'api';
+    app.setGlobalPrefix(globalPrefix);
+
+    app.use('/voyager', voyagerMiddleware({ endpointUrl: '/graphql' }));
+    const port = process.env.PORT || 3333;
+    await app.listen(port, () => {
+        Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix);
+    });
 }
 
 bootstrap();
