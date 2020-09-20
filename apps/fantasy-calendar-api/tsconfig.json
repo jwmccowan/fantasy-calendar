@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
+    "incremental": true,
+    "noEmit": false,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "target": "es6",
+    "tsBuildInfoFile": "../../.build-cache/app-asset-library.tsbuildinfo",
+    "types": ["node", "jest"]
+  },
+  "include": ["./src"],
+  "exclude": ["./node_modules", "dist"]
+}

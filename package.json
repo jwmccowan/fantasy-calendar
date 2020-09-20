@@ -14,28 +14,20 @@
     "@types/jest": "^26.0.14",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
     "@typescript-eslint/parser": "^4.1.1",
-    "awesome-typescript-loader": "^5.2.1",
-    "copy-webpack-plugin": "^6.1.1",
-    "css-loader": "^4.3.0",
     "eslint": "^7.9.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "file-loader": "^6.1.0",
-    "html-webpack-plugin": "^4.4.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
     "husky": "^4.3.0",
     "jest": "^26.4.2",
     "lerna": "^3.22.1",
     "lint-staged": "^10.4.0",
-    "mini-css-extract-plugin": "^0.11.2",
     "prettier": "^2.1.2",
-    "source-map-loader": "^1.1.0",
-    "webpack": "^4.44.2",
-    "webpack-bundle-analyzer": "^3.9.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "ts-jest": "25.2.1",
+    "ts-node": "^9.0.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lerna run --concurrency 1 --stream precommit --since HEAD --exclude-dependents"
+      "pre-commit": "yarn run lint-staged"
     }
   },
   "scripts": {
@@ -44,6 +36,12 @@
     "lint:all": "lerna exec --no-bail --no-prefix --stream -- yarn eslint . --ext ts --ext tsx --ext js --color"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix"
+    "**/*.{js,jsx,ts,tsx}": [
+      "yarn run prettier --write",
+      "yarn run eslint --fix --color --report-unused-disable-directives --quiet"
+    ],
+    "**/*.{css,scss,json}": [
+      "yarn run prettier --write"
+    ]
   }
 }

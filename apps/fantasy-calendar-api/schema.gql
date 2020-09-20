@@ -1,0 +1,29 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Calendar {
+  id: String!
+  title: String!
+  calItems: [CalendarItem!]
+}
+
+type CalendarItem {
+  id: String!
+  title: String!
+  description: String!
+  date: String!
+  calendar: Calendar!
+}
+
+type Query {
+  calendarItem(id: String!): CalendarItem!
+  calendarItems: [CalendarItem!]!
+  calendar(id: String!): Calendar!
+  calendars: [Calendar!]!
+}
+
+type Mutation {
+  createCalendarItem(title: String!, description: String!, calendar: String!, date: String!): CalendarItem!
+  createCalendar(title: String!): Calendar!
+}
