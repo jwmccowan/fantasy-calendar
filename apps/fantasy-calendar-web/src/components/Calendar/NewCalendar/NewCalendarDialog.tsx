@@ -32,7 +32,7 @@ export const NewCalendarDialog: React.FC<NewCalendarDialogProps> = ({ onClose, o
     <Dialog open={open} onClose={onClose}>
       <DialogTitle>{'New Calendar'}</DialogTitle>
       <StyledForm>
-        <TextField value={title} onChange={setTitle} fullWidth label="Title" />
+        <TextField autoFocus value={title} onChange={setTitle} fullWidth label="Title" />
       </StyledForm>
       <DialogActions>
         <Button disabled={mutationLoading} onClick={onClose} color="primary">

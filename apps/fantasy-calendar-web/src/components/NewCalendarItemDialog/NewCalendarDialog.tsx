@@ -87,7 +87,7 @@ export const NewCalendarDialog: React.FC<NewCalendarDialogProps> = ({ date, ...r
       <DialogTitle>{'New Calendar Item'}</DialogTitle>
       {!loading && !!data && (
         <StyledForm>
-          <TextField label="Title" fullWidth value={title} onChange={setTitle} />
+          <TextField autoFocus label="Title" fullWidth value={title} onChange={setTitle} />
           <TextField
             label="Description"
             fullWidth
