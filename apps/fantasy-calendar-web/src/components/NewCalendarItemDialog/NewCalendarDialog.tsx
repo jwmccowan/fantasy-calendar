@@ -64,7 +64,7 @@ type CalendarQueryResult = {
   calendars: Calendar[];
 };
 
-export const NewCalendarDialog: React.FC<NewCalendarDialogProps> = ({ date, ...rest }) => {
+export const NewCalendarDialog: React.FC<NewCalendarDialogProps> = ({ date, onClick, onClose }) => {
   const [title, setTitle] = useTextFieldValue();
   const [description, setDescription] = useTextFieldValue();
   const [calendar, setCalendar] = React.useState('');
@@ -79,11 +79,11 @@ export const NewCalendarDialog: React.FC<NewCalendarDialogProps> = ({ date, ...r
         calendar,
         date: date.toFormat('yyyy-LL-dd'),
       },
-    }).then(() => rest.onClose());
+    }).then(onClose);
   };
 
   return (
-    <Dialog {...rest}>
+    <Dialog onClick={onClick} onClose={onClose}>
       <DialogTitle>{'New Calendar Item'}</DialogTitle>
       {!loading && !!data && (
         <StyledForm>
@@ -109,7 +109,7 @@ export const NewCalendarDialog: React.FC<NewCalendarDialogProps> = ({ date, ...r
         </StyledForm>
       )}
       <DialogActions>
-        <Button disabled={mutationLoading} onClick={rest.onClose} color="primary">
+        <Button disabled={mutationLoading} onClick={onClose} color="primary">
           {'Cancel'}
         </Button>
         <Button disabled={mutationLoading} onClick={createNewCalendarItem} color="primary">
