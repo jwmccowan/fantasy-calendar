@@ -4,6 +4,7 @@ import {
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  Index,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -30,18 +31,22 @@ export class CalendarItem {
 
   @Field()
   @Column({ length: 10, nullable: false })
+  @Index()
   public date!: string;
 
   @Field(() => Calendar, { nullable: false })
   @ManyToOne(() => Calendar, (calendar) => calendar.calItems)
   public calendar!: Calendar;
 
+  @Field()
   @CreateDateColumn()
-  created!: Date;
+  createdAt!: Date;
 
+  @Field()
   @UpdateDateColumn()
-  updated!: Date;
+  updatedAt!: Date;
 
+  @Field()
   @DeleteDateColumn({ nullable: true })
   deletedAt?: Date;
 }

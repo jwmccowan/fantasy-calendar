@@ -28,12 +28,15 @@ export class Calendar {
   @OneToMany(() => CalendarItem, (calItem) => calItem.calendar)
   public calItems!: CalendarItem[];
 
+  @Field()
   @CreateDateColumn()
-  created!: Date;
+  createdAt!: Date;
 
+  @Field()
   @UpdateDateColumn()
-  updated!: Date;
+  updatedAt!: Date;
 
+  @Field()
   @DeleteDateColumn({ nullable: true })
   deletedAt?: Date;
 }

@@ -64,7 +64,7 @@ type CalendarQueryResult = {
   calendars: Calendar[];
 };
 
-export const NewCalendarDialog: React.FC<NewCalendarDialogProps> = ({ date, onClick, onClose }) => {
+export const NewCalendarDialog: React.FC<NewCalendarDialogProps> = ({ date, open, onClose }) => {
   const [title, setTitle] = useTextFieldValue();
   const [description, setDescription] = useTextFieldValue();
   const [calendar, setCalendar] = React.useState('');
@@ -83,7 +83,7 @@ export const NewCalendarDialog: React.FC<NewCalendarDialogProps> = ({ date, onCl
   };
 
   return (
-    <Dialog onClick={onClick} onClose={onClose}>
+    <Dialog open={open} onClose={onClose}>
       <DialogTitle>{'New Calendar Item'}</DialogTitle>
       {!loading && !!data && (
         <StyledForm>

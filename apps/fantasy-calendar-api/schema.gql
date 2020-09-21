@@ -6,7 +6,15 @@ type Calendar {
   id: String!
   title: String!
   calItems(end: String!, start: String!): [CalendarItem!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
 }
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type CalendarItem {
   id: String!
@@ -14,6 +22,9 @@ type CalendarItem {
   description: String!
   date: String!
   calendar: Calendar!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  deletedAt: DateTime!
 }
 
 type Query {
